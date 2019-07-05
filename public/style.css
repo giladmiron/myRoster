@@ -1,0 +1,44 @@
+body {
+    background-color: rgb(255,210,59);
+}
+
+.head {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(3,1fr);
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    font-family: Graduate;
+}
+
+.head .gif {
+width: 220px;
+height: 220px;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr)
+}
+
+.player{
+    display: grid;
+    grid-template-rows: repeat(4,1fr);
+    justify-content: center;
+    height: 310px;
+    font-family: Graduate;
+    /* background-color: orange; */
+    background-image: linear-gradient(to right, #f12711 0%, #f5af19 100%);
+    border: 1px solid black;
+    margin : 10px;
+    border-radius: 20%;
+    -webkit-box-shadow: 3px 6px 6px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 6px 6px -1px rgba(0,0,0,0.75);
+    box-shadow: 3px 6px 6px -1px rgba(0,0,0,0.75);}
+    
+    
+
+.player div{
+    text-align: center;
+}
