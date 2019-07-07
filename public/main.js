@@ -1,4 +1,5 @@
 $('body').on('click', '.dreamTeamButton', addToDreamTeam) 
+$('body').on('click', '.img', playerStats) 
 
 
 function renderTeam() {
@@ -25,3 +26,11 @@ function displayDreamTeam() {
     })
 }
 
+function playerStats(){
+    let playerName = $(this).siblings('.name').text().split(" ")
+    let firstName = playerName[0]
+    let lastName = playerName[1]
+    $.get(`/playerStats/${firstName}/${lastName}`, function(response){
+        alert(JSON.stringify(response))
+    })
+}

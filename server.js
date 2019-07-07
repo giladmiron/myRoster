@@ -16,6 +16,7 @@ const teamToIDs = {
     "suns": "1610612756"
 }
 
+const dreamTeam = []
 
 app.get('/teams/:teamName', function (req, res) {
     let teamName = req.params.teamName
@@ -32,9 +33,6 @@ app.get('/teams/:teamName', function (req, res) {
     })
 })
 
-
-const dreamTeam = []
-
 app.get('/dreamTeam', function(req,res){
     res.send(dreamTeam)
 })
@@ -43,6 +41,14 @@ app.post(`/roster`,function(req,res){
     const playerToDreamTeam = req.body
     dreamTeam.push(playerToDreamTeam)
     res.end()
+})
+
+app.get(`/playerStats/:firstName/:lastName`,function(req,res){
+    let firstName = req.params.firstName
+    let lastName = req.params.lastName
+    request.get(`https://nba-players.herokuapp.com/players-stats/${lastName}/${firstName}`,function(error,response){
+      res.send(JSON.parse(response.body)) 
+    })
 })
 
 
