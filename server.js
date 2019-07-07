@@ -8,13 +8,13 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
+
 const teamToIDs = {
     "lakers": "1610612747",
     "warriors": "1610612744",
     "heat": "1610612748",
     "suns": "1610612756"
 }
-
 
 
 app.get('/teams/:teamName', function (req, res) {

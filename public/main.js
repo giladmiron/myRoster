@@ -2,23 +2,9 @@ $('body').on('click', '.dreamTeamButton', addToDreamTeam)
 
 
 function renderTeam() {
-    $('#container').empty()
     let teamName = $('#team-input').val()
     $.get(`http://localhost:3000/teams/${teamName}`,function(data){
-    const source = $('#players-template').html()
-    const template = Handlebars.compile(source);
-    const newHTML = template({ players: data })
-    $('#container').append(newHTML)
-    })
-}
-
-function displayDreamTeam() {
-    $('#container').empty()
-    $.get('/dreamTeam', function(data){
-    const source = $('#players-template').html()
-    const template = Handlebars.compile(source);
-    const newHTML = template({ players: data })
-    $('#container').append(newHTML)
+    renderer.render(data)
     })
 }
 
@@ -32,3 +18,10 @@ function addToDreamTeam(){
         return
     })
 }
+
+function displayDreamTeam() {
+    $.get('/dreamTeam', function(data){
+    renderer.render(data)
+    })
+}
+

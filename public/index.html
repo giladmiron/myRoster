@@ -15,10 +15,10 @@
     <div class="head">
         <img class="gif" src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/7fb69e27266251.5636294a3940c.gif">
         <div class="content">
-        <h1 class="header">NBA PLAYERS</h1>
-        <input type="text" id="team-input" placeholder="search your team">
-        <button id="team-button" onclick=renderTeam()>Submit</button>
-        <button id="dream-Team" onclick=displayDreamTeam()>Display your dream team!</button>
+            <h1 class="header">NBA PLAYERS</h1>
+            <input type="text" id="team-input" placeholder="search your team">
+            <button id="team-button" onclick=renderTeam()>Submit</button>
+            <button id="dream-Team" onclick=displayDreamTeam()>Display your dream team!</button>
         </div>
         <img class="gif" src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/7fb69e27266251.5636294a3940c.gif">
     </div>
@@ -35,14 +35,14 @@
         <div class="name">{{ firstName}} {{lastName }}</div>
         <div class='jersey'>{{jersey}}</div>
         <img src="https://nba-players.herokuapp.com/players/{{lastName}}/{{firstName}}"
-        id='img'>
+        class='img'>
         <div class="pos">{{pos}}</div>
         <button class="dreamTeamButton">Add to your dream team!</button>
          </div>
         {{/each}}
         </script>
 
-        <!-- <script src="renderer.js"></script> -->
+    <script src="renderer.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
         </script>
