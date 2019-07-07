@@ -15,7 +15,6 @@ const teamToIDs = {
 
 
 app.get('/teams/:teamName', function (req, res) {
-    // const relevantPlayers = []
     let teamName = req.params.teamName
     request.get('http://data.nba.net/10s/prod/v1/2018/players.json', function (error, response) {
         let players = JSON.parse(response.body).league.standard
@@ -26,13 +25,19 @@ app.get('/teams/:teamName', function (req, res) {
             jersey: p.jersey, 
             pos: p.pos
         }})
-        // for (let i of players) {
-        //     relevantPlayers.push({ firstName: i.firstName, lastName: i.lastName, jersey: i.jersey, pos: i.pos })
-        // }
-        console.log(relevantPlayers)
         res.send(relevantPlayers)
     })
 })
+
+// app.get(`/playerStats/:name`),function (req,res){
+//     let playerName = req.params.name
+//     let firstName = playerName[0]
+//     let player = playerName.split("-")
+//     let lastName = playerName[1]
+//     request.get(`https://nba-players.herokuapp.com/players-stats/${lastName}/${firstName}`, function (error, response) {
+//         res.send(JSON.parse(response.body))
+//     })
+// }
 
 
 const port = 3000

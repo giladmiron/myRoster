@@ -8,3 +8,10 @@ function renderTeam() {
     $('#container').append(newHTML)
     })
 }
+
+// $('body').on('click', '.player', function () {
+//     const name = $(this).children('#name').text().split(" ")
+//     $.get(`http://localhost:3000/playerStats/${name[0]}kkkkk${name[1]}`,function(data){
+//    console.log(data)
+// })
+// })

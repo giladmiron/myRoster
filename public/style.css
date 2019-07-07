@@ -4,7 +4,6 @@ body {
 
 .head {
     display: grid;
-    grid-template-rows: 1fr;
     grid-template-columns: repeat(3,1fr);
     justify-content: center;
     align-items: center;
@@ -28,7 +27,6 @@ height: 220px;
     justify-content: center;
     height: 310px;
     font-family: Graduate;
-    /* background-color: orange; */
     background-image: linear-gradient(to right, #f12711 0%, #f5af19 100%);
     border: 1px solid black;
     margin : 10px;
@@ -42,3 +40,8 @@ height: 220px;
 .player div{
     text-align: center;
 }
+
+.player img {
+    border-radius: 60%;
+}
+
