@@ -2,9 +2,11 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const request = require('request')
+const bodyParser = require('body-parser')
 
 app.use(express.static(path.join(__dirname, 'public')))
-
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
 
 const teamToIDs = {
     "lakers": "1610612747",
@@ -12,6 +14,7 @@ const teamToIDs = {
     "heat": "1610612748",
     "suns": "1610612756"
 }
+
 
 
 app.get('/teams/:teamName', function (req, res) {
@@ -29,15 +32,20 @@ app.get('/teams/:teamName', function (req, res) {
     })
 })
 
-// app.get(`/playerStats/:name`),function (req,res){
-//     let playerName = req.params.name
-//     let firstName = playerName[0]
-//     let player = playerName.split("-")
-//     let lastName = playerName[1]
-//     request.get(`https://nba-players.herokuapp.com/players-stats/${lastName}/${firstName}`, function (error, response) {
-//         res.send(JSON.parse(response.body))
-//     })
-// }
+
+const dreamTeam = []
+
+app.get('/dreamTeam', function(req,res){
+    res.send(dreamTeam)
+})
+
+app.post(`/roster`,function(req,res){
+    const playerToDreamTeam = req.body
+    dreamTeam.push(playerToDreamTeam)
+    res.end()
+})
+
+
 
 
 const port = 3000
