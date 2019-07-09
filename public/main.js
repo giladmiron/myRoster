@@ -31,6 +31,4 @@ function playerStats(){
     let firstName = playerName[0]
     let lastName = playerName[1]
     $.get(`/playerStats/${firstName}/${lastName}`, function(response){
-        alert(JSON.stringify(response))
-    })
-}
+        console.log(response)})}

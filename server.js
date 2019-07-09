@@ -47,9 +47,10 @@ app.get(`/playerStats/:firstName/:lastName`,function(req,res){
     let firstName = req.params.firstName
     let lastName = req.params.lastName
     request.get(`https://nba-players.herokuapp.com/players-stats/${lastName}/${firstName}`,function(error,response){
-      res.send(JSON.parse(response.body)) 
-    })
+        res.send(JSON.parse(response.body))
+      }) 
 })
+
 
 
 
