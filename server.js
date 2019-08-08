@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 
 const teamToIDs = {
@@ -23,32 +23,34 @@ app.get('/teams/:teamName', function (req, res) {
     request.get('http://data.nba.net/10s/prod/v1/2018/players.json', function (error, response) {
         let players = JSON.parse(response.body).league.standard
         players = players.filter(p => p.teamId == teamToIDs[teamName] & p.isActive)
-        relevantPlayers = players.map(p => { return{
-            firstName: p.firstName, 
-            lastName: p.lastName, 
-            jersey: p.jersey, 
-            pos: p.pos
-        }})
+        relevantPlayers = players.map(p => {
+            return {
+                firstName: p.firstName,
+                lastName: p.lastName,
+                jersey: p.jersey,
+                pos: p.pos
+            }
+        })
         res.send(relevantPlayers)
     })
 })
 
-app.get('/dreamTeam', function(req,res){
+app.get('/dreamTeam', function (req, res) {
     res.send(dreamTeam)
 })
 
-app.post(`/roster`,function(req,res){
+app.post(`/roster`, function (req, res) {
     const playerToDreamTeam = req.body
     dreamTeam.push(playerToDreamTeam)
     res.end()
 })
 
-app.get(`/playerStats/:firstName/:lastName`,function(req,res){
+app.get(`/playerStats/:firstName/:lastName`, function (req, res) {
     let firstName = req.params.firstName
     let lastName = req.params.lastName
-    request.get(`https://nba-players.herokuapp.com/players-stats/${lastName}/${firstName}`,function(error,response){
+    request.get(`https://nba-players.herokuapp.com/players-stats/${lastName}/${firstName}`, function (error, response) {
         res.send(JSON.parse(response.body))
-      }) 
+    })
 })
 
 
